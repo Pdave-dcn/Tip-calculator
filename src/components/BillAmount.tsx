@@ -1,4 +1,6 @@
-const BillAmount = () => {
+import { BillAmountProps } from "./types/types";
+
+const BillAmount = ({ setTempBill, value }: BillAmountProps) => {
   return (
     <div className="flex flex-col mb-[30px]">
       <label
@@ -14,6 +16,8 @@ const BillAmount = () => {
           name="bill"
           id="bill"
           placeholder="0"
+          value={value}
+          onChange={(e) => setTempBill(e.target.value)}
         />
         <img
           className="absolute top-0 translate-x-4 translate-y-3"

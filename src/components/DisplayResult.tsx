@@ -1,4 +1,17 @@
-const DisplayResult = () => {
+import { DisplayProps } from "./types/types";
+import calculateResult from "./utils/calculateResult";
+
+const DisplayResult = ({
+  bill,
+  people,
+  percentage,
+  isUpdated,
+}: DisplayProps) => {
+  const { tipAmount, totalAmount } = calculateResult(bill, people, percentage);
+
+  const tipVal = isUpdated && Number(tipAmount) > 0 ? tipAmount : "0.00";
+  const totalVal = isUpdated && Number(totalAmount) > 0 ? totalAmount : "0.00";
+
   return (
     <div className="bg-cust-very-dark-grayish-cyan p-[20px] rounded-xl flex flex-col justify-center gap-[20px] lg:p-[35px] lg:pt-[65px] lg:justify-between lg:h-full">
       <div className="flex flex-col gap-[20px] lg:gap-[40px]">
@@ -15,8 +28,8 @@ const DisplayResult = () => {
             type="text"
             name="tip-per-person"
             aria-label="Tip amount per person"
-            className="pointer-events-none h-[50px] w-[150px] text-3xl text-cust-strong-cyan text-right self-end bg-cust-very-dark-grayish-cyan lg:text-5xl"
-            value={"$0.00"}
+            className="pointer-events-none h-[50px] w-[180px] text-3xl text-cust-strong-cyan text-right self-end bg-cust-very-dark-grayish-cyan lg:text-5xl"
+            value={`$${tipVal}`}
             readOnly
           />
         </div>
@@ -31,8 +44,8 @@ const DisplayResult = () => {
             type="text"
             name="tip-per-person"
             aria-label="Total per person"
-            className="pointer-events-none h-[50px] w-[150px] text-3xl text-cust-strong-cyan text-right bg-cust-very-dark-grayish-cyan lg:text-5xl"
-            value={"$0.00"}
+            className="pointer-events-none h-[50px] w-[200px] text-3xl text-cust-strong-cyan text-right bg-cust-very-dark-grayish-cyan lg:text-5xl"
+            value={`$${totalVal}`}
             readOnly
           />
         </div>
