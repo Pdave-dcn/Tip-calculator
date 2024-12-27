@@ -5,6 +5,7 @@ import PeopleAmount from "./PeopleAmount";
 import PercentageList from "./PercentageList";
 
 const CalculatorWrapper = () => {
+  // State variables for storing input values and error messages
   const [bill, setBill] = useState("");
   const [people, setPeople] = useState("");
   const [percentage, setPercentage] = useState("");
@@ -12,15 +13,23 @@ const CalculatorWrapper = () => {
   const [numbersErrorMessage, setNumbersErrorMessage] = useState("");
   const [tipErrorMessage, setTipErrorMessage] = useState("");
 
+  // Temporary state variables for user input before finalizing
   const [tempBill, setTempBill] = useState("");
   const [tempPeople, setTempPeople] = useState("");
   const [tempPercentage, setTempPercentage] = useState("");
 
+  // State variable for selected tip percentage
+  const [selectedPercentage, setSelectedPercentage] = useState<string | null>(
+    null
+  );
+
+  // Effect hook to handle "Enter" key press event
   useEffect(() => {
     const handleKeyPres = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
         let hasError = false;
 
+        // Validate bill and people inputs
         if (!tempBill || !tempPeople) {
           setNumbersErrorMessage("Fields can't be empty");
           hasError = true;
@@ -37,6 +46,7 @@ const CalculatorWrapper = () => {
           setNumbersErrorMessage("");
         }
 
+        // Validate tip percentage input
         if (!tempPercentage) {
           setTipErrorMessage("Select a tip percentage");
           hasError = true;
@@ -50,6 +60,7 @@ const CalculatorWrapper = () => {
           setTipErrorMessage("");
         }
 
+        // If no errors, update the main state variables
         if (!hasError) {
           setBill(tempBill);
           setPeople(tempPeople);
@@ -59,10 +70,12 @@ const CalculatorWrapper = () => {
       }
     };
 
+    // Add event listener for "Enter" key press
     document.addEventListener("keydown", handleKeyPres);
     return () => document.removeEventListener("keydown", handleKeyPres);
   }, [tempBill, tempPeople, tempPercentage]);
 
+  // Function to reset all state variables
   const handleReset = () => {
     setBill("");
     setPeople("");
@@ -71,6 +84,7 @@ const CalculatorWrapper = () => {
     setTempPeople("");
     setTempPercentage("");
     setIsUpdated(false);
+    setSelectedPercentage(null);
   };
 
   return (
@@ -84,6 +98,8 @@ const CalculatorWrapper = () => {
         <PercentageList
           setTempPercentage={setTempPercentage}
           errorMessage={tipErrorMessage}
+          selectedPercentage={selectedPercentage}
+          setSelectedPercentage={setSelectedPercentage}
         />
         <PeopleAmount
           setTempPeople={setTempPeople}

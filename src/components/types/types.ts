@@ -7,6 +7,8 @@ export type BillAmountProps = {
 export type PercentageListProps = {
   setTempPercentage: (value: string) => void;
   errorMessage: string;
+  selectedPercentage: string | null;
+  setSelectedPercentage: (value: string | null) => void;
 };
 
 export type PeopleAmountProps = {

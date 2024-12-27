@@ -4,18 +4,22 @@ import { useState } from "react";
 const PercentageList = ({
   setTempPercentage,
   errorMessage,
+  selectedPercentage,
+  setSelectedPercentage,
 }: PercentageListProps) => {
   const [customValue, setCustomValue] = useState("");
 
   const handleButtonClick = (value: string) => {
     setCustomValue("");
     setTempPercentage(value);
+    setSelectedPercentage(value);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setCustomValue(inputValue);
     setTempPercentage(inputValue);
+    setSelectedPercentage(null);
   };
 
   return (
@@ -33,7 +37,11 @@ const PercentageList = ({
           <button
             type="button"
             key={percent}
-            className="bg-cust-very-dark-grayish-cyan h-[50px] rounded-lg text-white text-2xl md:hover:text-cust-very-dark-grayish-cyan md:hover:bg-cust-hvr focus:bg-cust-strong-cyan focus:text-cust-very-dark-grayish-cyan"
+            className={`bg-cust-very-dark-grayish-cyan h-[50px] rounded-lg text-white text-2xl lg:hover:text-cust-very-dark-grayish-cyan md:hover:bg-cust-hvr ${
+              selectedPercentage === percent.toString()
+                ? "bg-[#26c2ae] text-[#00474b]"
+                : ""
+            }`}
             onClick={() => handleButtonClick(percent.toString())}
           >
             {percent}%
