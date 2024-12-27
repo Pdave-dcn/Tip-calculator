@@ -39,7 +39,7 @@ const PercentageList = ({
             key={percent}
             className={`bg-cust-very-dark-grayish-cyan h-[50px] rounded-lg text-white text-2xl lg:hover:text-cust-very-dark-grayish-cyan md:hover:bg-cust-hvr ${
               selectedPercentage === percent.toString()
-                ? "bg-[#26c2ae] text-[#00474b]"
+                ? "bg-teal-500 text-teal-900"
                 : ""
             }`}
             onClick={() => handleButtonClick(percent.toString())}
@@ -52,7 +52,7 @@ const PercentageList = ({
           type="text"
           name="custom-%"
           id="custom-%"
-          className="h-[50px] rounded-lg text-cust-dark-grayish-cyan text-cust-very-dark-grayish-cyan text-2xl bg-cust-very-light-grayish-cyan text-center caret-cust-strong-cyan placeholder-cust-very-dark-grayish-cyan focus:text-right focus:placeholder-transparent focus:outline-cust-strong-cyan p-4 cursor-pointer"
+          className="h-[50px] rounded-lg text-cust-dark-grayish-cyan text-cust-very-dark-grayish-cyan text-2xl bg-cust-very-light-grayish-cyan text-center caret-cust-strong-cyan placeholder-cust-very-dark-grayish-cyan focus:text-right focus:placeholder-transparent focus:outline-cust-strong-cyan p-4 cursor-pointer lg:hover:border-cust-strong-cyan lg:hover:border-[1px]"
           placeholder="Custom"
           value={customValue}
           onChange={handleInputChange}

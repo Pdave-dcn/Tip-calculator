@@ -29,7 +29,7 @@ const DisplayResult = ({
             type="text"
             name="tip-per-person"
             aria-label="Tip amount per person"
-            className="pointer-events-none h-[50px] w-[180px] text-3xl text-cust-strong-cyan text-right self-end bg-cust-very-dark-grayish-cyan lg:text-5xl"
+            className="pointer-events-none h-[50px] w-[180px] text-[1.7rem] text-cust-strong-cyan text-right self-end bg-cust-very-dark-grayish-cyan lg:text-5xl"
             value={`$${tipVal}`}
             readOnly
           />
@@ -45,7 +45,7 @@ const DisplayResult = ({
             type="text"
             name="tip-per-person"
             aria-label="Total per person"
-            className="pointer-events-none h-[50px] w-[200px] text-3xl text-cust-strong-cyan text-right bg-cust-very-dark-grayish-cyan lg:text-5xl"
+            className="pointer-events-none h-[50px] w-[200px] text-[1rem text-cust-strong-cyan text-right bg-cust-very-dark-grayish-cyan lg:text-5xl"
             value={`$${totalVal}`}
             readOnly
           />
