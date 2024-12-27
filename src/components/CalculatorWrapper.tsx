@@ -63,6 +63,16 @@ const CalculatorWrapper = () => {
     return () => document.removeEventListener("keydown", handleKeyPres);
   }, [tempBill, tempPeople, tempPercentage]);
 
+  const handleReset = () => {
+    setBill("");
+    setPeople("");
+    setPercentage("");
+    setTempBill("");
+    setTempPeople("");
+    setTempPercentage("");
+    setIsUpdated(false);
+  };
+
   return (
     <div className="bg-white w-full rounded-xl p-[25px] font-spaceMono font-bold md:w-[600px] md:mb-[20px] lg:mb-[60px] lg:h-auto lg:w-[900px] lg:flex lg:items-stretch lg:h-full">
       <div className="lg:p-[30px] lg:flex-1">
@@ -87,6 +97,7 @@ const CalculatorWrapper = () => {
           people={people}
           percentage={percentage}
           isUpdated={isUpdated}
+          onReset={handleReset}
         />
       </div>
     </div>

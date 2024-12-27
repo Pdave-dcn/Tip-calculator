@@ -6,6 +6,7 @@ const DisplayResult = ({
   people,
   percentage,
   isUpdated,
+  onReset,
 }: DisplayProps) => {
   const { tipAmount, totalAmount } = calculateResult(bill, people, percentage);
 
@@ -52,7 +53,10 @@ const DisplayResult = ({
       </div>
       <button
         type="button"
-        className="bg-cust-strong-cyan hover:bg-cust-hvr hover:opacity-100 opacity-15 h-[45px] rounded-md text-[1.2rem] text-cust-very-dark-grayish-cyan"
+        onClick={onReset}
+        className={`bg-cust-strong-cyan hover:bg-cust-hvr hover:opacity-100 ${
+          isUpdated ? "opacity-100" : "opacity-15"
+        } h-[45px] rounded-md text-[1.2rem] text-cust-very-dark-grayish-cyan`}
       >
         RESET
       </button>

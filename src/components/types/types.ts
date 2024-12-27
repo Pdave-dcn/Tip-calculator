@@ -20,4 +20,5 @@ export type DisplayProps = {
   people: string;
   percentage: string;
   isUpdated: boolean;
+  onReset: () => void;
 };
